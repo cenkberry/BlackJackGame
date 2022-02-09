@@ -202,16 +202,26 @@ nextSet.addEventListener("click", () => {
     };
 
     stopCard.onclick = function compTakeCard() {
-        let compextra = Math.floor((Math.random()) * 13 + 1);
-        cnumb++;
-        let cdivname = "ccard" + cnumb;
-        cCards.innerHTML += `<img class="${cdivname}" src="./images/${compextra}.png" alt="">`;
-        if (compextra > 10) {
-            compextra = 10;
+
+        if(cSum <= 13){
+            let compextra = Math.floor((Math.random()) * 13 + 1);
+            cnumb++;
+            let cdivname = "ccard" + cnumb;
+            cCards.innerHTML += `<img class="${cdivname}" src="./images/${compextra}.png" alt="">`;
+            if (compextra > 10) {
+                compextra = 10;
+            }
+            cSum += compextra;
+            cTotal.innerHTML = cSum;
+            summer();
+            sumAfterStopCard();
+        
         }
-        cSum += compextra;
-        cTotal.innerHTML = cSum;
-        summer();
-        sumAfterStopCard();
+        else{
+            cTotal.innerHTML = cSum;
+            summer();
+            sumAfterStopCard();
+        }
+        
     }
 });
